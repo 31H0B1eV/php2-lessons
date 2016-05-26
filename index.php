@@ -1,9 +1,10 @@
 <?php
 
-require __DIR__ . '/classes/Db.php';
-require __DIR__ . '/classes/Model.php';
 require __DIR__ . '/models/Article.php';
 
-$articles = Article::findAll();
+$article = new Article;
+$article->title = 'Марсианин съел бомжа';
+$article->lead = 'Сенсация в Чухломе!';
+$article->save();
 
-var_dump($articles);
+echo $article->id;

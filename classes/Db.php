@@ -21,4 +21,15 @@ class Db
         }
     }
 
+    public function execute($sql, $params=[])
+    {
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
+    }
+
+    public function insertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
+
 }
