@@ -1,8 +1,5 @@
 <?php
 
-require __DIR__ . '/Orderable.php';
-require __DIR__ . '/Colors.php';
-
 class Item
     implements Orderable
 {

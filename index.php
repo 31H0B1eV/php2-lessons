@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
 
-$article = new Article;
-$article->title = 'Марсианин съел бомжа';
-$article->lead = 'Сенсация в Чухломе!';
-$article->save();
+$news = Article::findAll();
 
-echo $article->id;
+$view = new View;
+$view->news = $news;
+
+$view->display(__DIR__ . '/templates/index.php');
