@@ -7,8 +7,13 @@ $parts = explode('/', $url);
 $ctrl = $parts[1] ?: 'Index';
 $action = $parts[2] ?: 'Default';
 
-$ctrlClass = '\App\Controllers\\'. ucfirst($ctrl);
-$controller = new $ctrlClass;
+try {
+    $ctrlClass = '\App\Controllers\\'. ucfirst($ctrl);
+    $controller = new $ctrlClass;
 
-$actionMethodName = 'action' . ucfirst($action);
-$controller->$actionMethodName();
+    $actionMethodName = 'action' . ucfirst($action);
+    $controller->$actionMethodName();
+} catch ( PDOException $e )
+{
+    echo 'Ошибка: ' . $e->getMessage();
+}
