@@ -1,7 +1,9 @@
 <?php
 
+namespace App;
+
 class View
-    implements Countable
+    implements \Countable
 {
 
     protected $data;

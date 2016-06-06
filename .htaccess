@@ -1,0 +1,6 @@
+# http://php2.local/index/default
+# -> http://php2.local/index.php
+
+RewriteEngine On
+
+RewriteRule ^.*$ index.php [QSA,L]

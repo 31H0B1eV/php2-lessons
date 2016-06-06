@@ -2,9 +2,13 @@
 
 require __DIR__ . '/autoload.php';
 
-$news = Article::findAll();
+$url = $_SERVER['REQUEST_URI'];
+$parts = explode('/', $url);
+$ctrl = $parts[1] ?: 'Index';
+$action = $parts[2] ?: 'Default';
 
-$view = new View;
-$view->news = $news;
+$ctrlClass = '\App\Controllers\\'. ucfirst($ctrl);
+$controller = new $ctrlClass;
 
-$view->display(__DIR__ . '/templates/index.php');
+$actionMethodName = 'action' . ucfirst($action);
+$controller->$actionMethodName();
